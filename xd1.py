@@ -11,7 +11,7 @@ h4 =2000
 
 
 
-fueVendida = False
+
 descuento=0
 totalVentas = 0
 while opcion!="5":
