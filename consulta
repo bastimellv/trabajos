@@ -1,0 +1,28 @@
+SELECT numrun_cli||'-'|| dvrun_cli AS "run cliente",
+    lower(pnombre_cli)||' '||
+    initcap(snombre_cli)||' '||
+    appaterno_cli||' '||apmaterno_cli as"nombres completo",
+    fecha_nac_cli as"fecha nacimiento"
+
+from cliente
+where extract (day from fecha_nac_cli)= extract(dat from sysdate)
+order by appaterno_cli asc;
+notas:
+LOWER se utiliza para que el nombre este en minuscula ,
+INITCAP se  utiliza para que la primeara letra este en mayusculas,
+AS"name",
+|| se utiliza para separar ideas
+
+actividad 2
+
+SELECT * FROM empleado;
+
+
+SELECT numrun_emp||' '|| dvrun_emp"RUN EMPLEADO",
+    pnombre_emp||' '||snombre_emp||' '||appaterno_emp||' '||apmaterno_emp as "nombre completo empleado",
+    sueldo_base"SUELDO BASE",
+     
+    Sueldo_Base / 100000 AS Multiplo,
+    round(Sueldo_Base / 100000) AS porcentaje_movilizacion
+FROM empleado
+order by sueldo_base desc;
