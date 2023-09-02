@@ -1,0 +1,129 @@
+if + tab : Genera la estructura condicional if.
+
+if (true) { // código a ejecutar si es verdadero la condición }
+
+ifelse + tab : Genera la estructura condicional if - else.
+
+if (true) { // código a ejecutar si es verdadero la condición } else { // código a ejecutar si es falso la condición }
+
+sw + tab : Genera la estructura condicional switch.
+
+switch (variable) { case "valor": break; default: break; } Autocompletado de estructuras repetitivas
+
+dowhile + tab : Genera la estructura repetitiva do-while.
+
+do { // Código a ejecutar si entra al bucle } while (true);
+
+whilexp + tab : Genera la estructura repetitiva while.
+
+while (true) { // Código a ejecutar si entra al bucle }
+
+fori + tab : Genera la estructura repetitiva for.
+
+for (int i = 0; i < 10; i++) { // Código a ejecutar si entra al bucle }
+
+fore + tab : Genera la estructura repetitiva forEach para iterar un Array.
+
+for (String arg : args) { // Código a ejecutar por cada elemento iterado } Autocompletado de bloques de código para manejo de excepciones
+
+trycatch + tab : Genera un bloque de código de try-catch.
+
+try { // Código a ejecutar si no hay errores } catch (Exception e) { // Código a ejecutar si hay una excepción }
+
+ca + tab : Genera un bloque de código de catch.
+
+catch (Exception ex) { // Código a ejecutar si hay una excepción }
+
+fy + tab : Genera un bloque de código de finally.
+
+finally { // Código que siempre se ejecutará } Autocompletado para tipos de dato
+
+sh + tab : Autocompleta la palabra reservada short.
+
+db + tab : Autocompleta la palabra reservada double.
+
+fl + tab : Autocompleta la palabra reservada float.
+
+bo + tab : Autocompleta la palabra reservada boolean.
+
+Autocompletado para métodos de acceso
+
+pu + tab : Autocompleta la palabra reservada public.
+
+pr + tab : Autocompleta la palabra reservada private.
+
+pe + tab : Autocompleta la palabra reservada protected.
+
+Autocompletado de palabras reservadas
+
+ir + tab : Autocompleta la palabra reservada import.
+
+ie + tab : Autocompleta la palabra reservada interface.
+
+im + tab : Autocompleta la palabra reservada implements.
+
+cl + tab : Autocompleta la palabra reservada class.
+
+ex + tab : Autocompleta la palabra reservada extends.
+
+su + tab : Autocompleta la palabra reservada super.
+
+fi + tab : Autocompleta la palabra reservada final.
+
+st + tab : Autocompleta la palabra reservada static.
+
+cn + tab : Autocompleta la palabra reservada continue.
+
+re + tab : Autocompleta la palabra reservada return.
+
+fa + tab : Autocompleta la palabra reservada false.
+
+tw + tab : Autocompleta la palabra reservada throw.
+
+df + tab : Autocompleta la palabra reservada default.
+
+br + tab : Autocompleta la palabra reservada break.
+
+Autocompletado para nivel de acceso + static + final + tipo de dato Para un nivel de acceso privado
+
+psf + tab : Genera un private static final.
+
+psfb + tab : Genera un private static final boolean.
+
+psfi + tab : Genera un private static final int.
+
+psfs + tab : Genera un private static final String.
+
+Para un nivel de acceso público
+
+Psf + tab : Genera un public static final.
+
+Psfb + tab : Genera un public static final boolean.
+
+Psfi + tab : Genera un public static final int.
+
+Psfs + tab : Genera un public static final String.
+
+Autocompletado para métodos en consola
+
+sout + tab : Autocompleta el método System.out.println().
+
+System.out.println("");
+
+soutv + tab : Autocompleta el método System.out.println() con una variable concatenada.
+
+System.out.println(" " + var);
+
+serr + tab : Autocompleta el método System.err.println().
+
+System.err.println(""); Atajos adicionales
+
+Ctrl + Space : Sirve para activar autocompletado o sugerencias.
+
+Ctrl + Shift + flecha hacia abajo : Duplica la linea sombreada o donde se encuentre el cursor.
+
+Alt + Insert : Genera constructores, métodos, propiedades.
+
+Alt + Enter : Ver sugerencia del IDE o solución de errores sobre el texto sombreado.
+
+Ctrl + R : Para editar todos los textos (objetos, clases, variables, métodos, propiedades, constructores) del mismo valor sombreado, al mismo tiempo.
