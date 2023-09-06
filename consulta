@@ -26,3 +26,49 @@ SELECT numrun_emp||' '|| dvrun_emp"RUN EMPLEADO",
     round(Sueldo_Base / 100000) AS porcentaje_movilizacion
 FROM empleado
 order by sueldo_base desc;
+
+
+actividad 3
+
+SELECT numrun_cli ||'-'|| dvrun_cli AS "RUN CLIENTE",
+    LOWER(pnombre_cli)||' '||
+    INITCAP(snombre_cli)||' '||
+    appaterno_cli||' '||apmaterno_cli AS "NOMBRE COMPLETO CLIENTE",
+    fecha_nac_cli AS "FECHA NACIMIENTO"
+FROM cliente
+WHERE EXTRACT(DAY FROM fecha_nac_cli) = EXTRACT(DAY FROM SYSDATE) + 1
+-- AND EXTRACT(MONTH FROM fecha_nac_cli) = EXTRACT(MONTH FROM SYSDATE)
+ORDER BY appaterno_cli ASC;
+
+actividad 4
+select 'El empleado(a)' || 
+        pnombre_emp||' '||
+        appaterno_emp||' '||
+        apmaterno_emp||
+        ' estuvo de cumpleaños el '||
+        extract(day from fecha_nac)||' de '||
+        rtrim(to_char(fecha_nac, 'Month'))||'. Cumplió '|| 
+        round(months_between(current_date, fecha_nac)/12)  ||' años'
+from empleado
+where extract(month from current_date)-1 = extract(month from fecha_nac)
+order by extract(day from fecha_nac), appaterno_emp;
+
+actividad 5
+SELECT to_char( numrun_cli,'99G999G999')||'-'|| dvrun_cli as "RUN EMPLEADO ",
+   
+    initcap(appaterno_cli)||' '||
+    substr(apmaterno_cli,0 ,1)||'. '||
+    initcap(pnombre_cli) ||' '||
+    upper(snombre_cli) " NOMBRE CLIENTE",
+   
+    direccion,
+    NVL(TO_CHAR(fono_fijo_cli),'NO POSE TELEFONO FIJO')"TELEFONO FIJO",
+    NVL(TO_CHAR(celular_cli),'NO POSE CELULAR')"CELULAR",
+    id_comuna "COMUNA"
+   
+FROM cliente
+
+order by '&orden_column' asc,'&order_column' desc;
+
+
+
