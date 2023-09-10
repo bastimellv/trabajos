@@ -1,0 +1,172 @@
+import com.mycompany.principal.Cliente;
+import com.mycompany.principal.Evento;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
+
+public class Principal {
+    public static void main(String[] args) {
+        Scanner leerTeclado = new Scanner(System.in);
+        List<Cliente> clientes = new ArrayList<>();
+        List<Evento> eventos = new ArrayList<>();
+
+        while (true) {
+            System.out.println("********MENU********");
+            System.out.println("1. Crear Cliente");
+            System.out.println("2. Crear Evento y asociarlo a un Cliente");
+            System.out.println("3. Mostrar Información del Evento");
+            System.out.println("4. Aplicar Descuento");
+            System.out.println("5. Salir");
+            System.out.print("Seleccione una opción: ");
+
+            String opcionStr = leerTeclado.nextLine();
+
+            if (esNumero(opcionStr)) {
+                int opcion = Integer.parseInt(opcionStr);
+
+                switch (opcion) {
+                    case 1 -> {
+                        // Crear Cliente
+                        System.out.println("Nombre del cliente: ");
+                        String nombreCliente = leerTeclado.nextLine();
+                        System.out.println("Apellido del cliente: ");
+                        String apellidoCliente = leerTeclado.nextLine();
+
+                        String telefonoCliente;
+                        boolean telefonoValido = false;
+
+                        do {
+                            System.out.println("Telefono del cliente (solo números y 9 dígitos): ");
+                            telefonoCliente = leerTeclado.nextLine();
+
+                            if (telefonoCliente.matches("\\d{9}")) {
+                                telefonoValido = true;
+                            } else {
+                                System.out.println("Número de teléfono no válido. Debe contener 9 dígitos y ser solo números.");
+                            }
+                        } while (!telefonoValido);
+
+                        System.out.println("Correo del cliente: ");
+                        String correoCliente = leerTeclado.nextLine();
+                        System.out.println("Tipo de cliente (N para nuevo, A para antiguo): ");
+                        char tipoCliente = leerTeclado.nextLine().charAt(0);
+                        Cliente cliente = new Cliente(nombreCliente, apellidoCliente, correoCliente, telefonoCliente, tipoCliente);
+                        clientes.add(cliente); // Agregar el cliente a la lista
+                    }
+
+                    case 2 -> {
+                        // Crear Evento y asociarlo a un Cliente
+                        if (clientes.isEmpty()) {
+                            System.out.println("Debe crear un cliente primero.");
+                        } else {
+                            System.out.println("Nombre del evento");
+                            String nombreEvento = leerTeclado.nextLine();
+                            System.out.println("Fecha del evento (formato DD/MM/AAAA): ");
+                            String fechaEventoStr = leerTeclado.nextLine();
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                            Date fechaEvento = null;
+                            try {
+                                fechaEvento = sdf.parse(fechaEventoStr);
+                            } catch (ParseException e) {
+                                System.out.println("Formato de fecha incorrecto.");
+                                break;
+                            }
+                            System.out.println("Lugar del evento: ");
+                            String lugarEvento = leerTeclado.nextLine();
+                            System.out.println("Costo del evento: ");
+                            double costoEvento = leerTeclado.nextDouble();
+                            leerTeclado.nextLine();
+
+                            // Mostrar la lista de clientes con números
+                            System.out.println("Clientes disponibles:");
+                            for (int i = 0; i < clientes.size(); i++) {
+                                System.out.println(i + ". " + clientes.get(i).getNombreCompleto());
+                            }
+
+                            System.out.print("Seleccione un cliente ingresando el número correspondiente: ");
+                            int clienteIndex = leerTeclado.nextInt();
+                            leerTeclado.nextLine();
+
+                            if (clienteIndex >= 0 && clienteIndex < clientes.size()) {
+                                Cliente clienteAsociado = clientes.get(clienteIndex);
+                                Evento evento = new Evento(nombreEvento, costoEvento, clienteAsociado, new java.sql.Date(fechaEvento.getTime()), lugarEvento);
+
+                                if (evento.getCosto() >= 150000) {
+                                    eventos.add(evento); // Agregar el evento a la lista
+                                    System.out.println("Evento agregado con éxito.");
+                                } else {
+                                    System.out.println("Dinero insuficiente. El costo mínimo es de $150,000.");
+                                }
+                            } else {
+                                System.out.println("Índice de cliente no válido.");
+                            }
+                        }
+                    }
+
+                    case 3 -> {
+                        // Mostrar Información del Evento
+                        if (eventos.isEmpty()) {
+                            System.out.println("No hay eventos para mostrar.");
+                        } else {
+                            System.out.println("Seleccione un evento para mostrar la información: ");
+                            for (int i = 0; i < eventos.size(); i++) {
+                                System.out.println(i + ". " + eventos.get(i).getNombre());
+                            }
+                            int eventoIndex = leerTeclado.nextInt();
+                            leerTeclado.nextLine();
+                            if (eventoIndex >= 0 && eventoIndex < eventos.size()) {
+                                Evento eventoSeleccionado = eventos.get(eventoIndex);
+                                eventoSeleccionado.mostrarInformacion();
+                            } else {
+                                System.out.println("Índice de evento no válido.");
+                            }
+                        }
+                    }
+
+                    case 4 -> {
+                        // Aplicar Descuento
+                        if (eventos.isEmpty()) {
+                            System.out.println("No hay eventos para aplicar descuento.");
+                        } else {
+                            for (Evento evento : eventos) {
+                                if (evento.getCliente().getTipo() == 'N' && evento.getCosto() >= 1000000) {
+                                    double descuento = evento.getCosto() * 0.05;
+                                    double nuevoCosto = evento.getCosto() - descuento;
+                                    long costoEntero = Math.round(nuevoCosto); // Redondear al entero más cercano
+                                    evento.setCosto(costoEntero);
+                                    System.out.println("Descuento aplicado al evento '" + evento.getNombre() + "': $" + Math.round(descuento));
+                                    System.out.println("Nuevo costo del evento: $" + costoEntero);
+                                }
+                            }
+                        }
+                    }
+
+                    case 5 -> {
+                        // Salir
+                        System.out.println("Saliendo del programa.");
+                        leerTeclado.close();
+                        System.exit(0);
+                    }
+
+                    default -> System.out.println("Opción no válida. Intente nuevamente.");
+                }
+            } else {
+                System.out.println("Entrada no válida. Ingrese un número válido.");
+            }
+        }
+    }
+
+    // Función para verificar si una cadena es un número
+    private static boolean esNumero(String cadena) {
+        try {
+            Integer.valueOf(cadena);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+}
