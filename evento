@@ -1,0 +1,82 @@
+package com.mycompany.principal;
+
+import java.sql.Date;
+
+public class Evento {
+    private String nombre;
+    private double costo;
+    private Cliente cliente;
+    private Date fecha;
+    private String lugar;
+
+    public Evento(String nombre, double costo, Cliente cliente, Date fecha, String lugar) {
+        this.nombre = nombre;
+        this.costo = costo;
+        this.cliente = cliente;
+        this.fecha = fecha;
+        this.lugar = lugar;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    public void mostrarInformacion() {
+        if (cliente == null) {
+            System.out.println("Cliente no asignado al evento.");
+        } else {
+            System.out.println("Nombre del cliente: " + cliente.getNombre());
+            System.out.println("Apellido del cliente: " + cliente.getApellido());
+            System.out.println("Correo del cliente: " + cliente.getCorreo());
+            System.out.println("Telefono del cliente: " + cliente.getTelefono());
+            System.out.println("Nombre del evento: " + nombre);
+            System.out.println("Dia del evento: " + fecha);
+            System.out.println("Lugar del evento: " + lugar);
+            System.out.println("Costo del evento: $" + costo);
+        }
+    }
+
+    public void aplicarDescuento() {
+        if (cliente != null && cliente.getTipo() == 'N' && costo >= 1000000) {
+            double descuento = costo * 0.05;
+            costo -= descuento;
+            System.out.println("Descuento aplicado: $" + descuento);
+        }
+    }
+}
