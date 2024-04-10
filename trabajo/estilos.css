@@ -1,0 +1,20 @@
+
+.titulo{
+    text-decoration: line;
+    background-color: blue;
+    color:white;
+    text-align: center;
+}
+.boton{
+    background-color: rgb(133, 133, 133);
+    text-align: left;
+    color: black;
+
+}
+.public{
+    height: auto;
+    width: auto;
+    align-items: center;
+    max-width: 100%;
+   
+}
