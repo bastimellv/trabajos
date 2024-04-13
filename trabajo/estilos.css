@@ -18,3 +18,28 @@
     max-width: 100%;
    
 }
+.formula{
+    text-align: left;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-style: italic;
+    font-family: monospace;
+}
+.form-label {
+    color: rgb(253, 253, 253); 
+    font-size: 23px;
+    font-family: monospace;
+    
+}
+.form-check-inline{
+margin: 16px;
+}
+.carousel-caption{
+    text-align: left ;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-style: italic;
+    font-family: monospace;
+    margin-left: -40px;
+
+}
