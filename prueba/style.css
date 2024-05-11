@@ -1,0 +1,62 @@
+h5 {
+    color: rgb(214, 214, 226); /* Cambia el color del texto a azul */
+    background-color: rgba(25, 23, 23, 0.703);
+  }
+.carousel-item img {
+    height: 500px; /* Establece la altura deseada para las imágenes del carrusel */
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor manteniendo su relación de aspecto */
+}
+#texto-destacado {
+    background-color: #f8f9fa; /* Cambia el color de fondo del contenedor */
+    padding: 20px; /* Añade relleno alrededor del texto */
+    border-radius: 20px; /* Añade bordes redondeados al contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega una sombra al contenedor */
+    color: rgb(10, 61, 192);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:300% ;
+}
+/* Consulta de medios para dispositivos móviles pequeños */
+@media (max-width: 576px) {
+    h5 {
+        font-size: 24px; /* Tamaño de fuente más pequeño para dispositivos móviles pequeños */
+    }
+
+    .carousel-item img {
+        height: 300px; /* Reducción de la altura de las imágenes del carrusel para dispositivos móviles pequeños */
+    }
+
+    #texto-destacado {
+        font-size: 200%; /* Reducción del tamaño de fuente para el texto destacado en dispositivos móviles pequeños */
+        padding: 10px; /* Reducción del relleno para dispositivos móviles pequeños */
+    }
+}
+
+/* Consulta de medios para dispositivos móviles en general */
+@media (max-width: 767px) {
+    h5 {
+        font-size: 28px; /* Tamaño de fuente más pequeño para dispositivos móviles */
+    }
+
+    .carousel-item img {
+        height: 400px; /* Reducción de la altura de las imágenes del carrusel para dispositivos móviles */
+    }
+
+    #texto-destacado {
+        font-size: 250%; /* Reducción del tamaño de fuente para el texto destacado en dispositivos móviles */
+        padding: 15px; /* Reducción del relleno para dispositivos móviles */
+    }
+}
+
+.dropdown button img {
+    /* Estilos aquí */
+    width: 42px;
+    height: 20px;
+    margin-right: 5px;
+}
+/* Estilos para las imágenes dentro de los elementos .dropdown-item */
+.dropdown-menu button img {
+    width: 100px; /* Ancho deseado */
+    height: auto; /* Altura automática para mantener la proporción */
+    margin: 0 auto; 
+}
+
