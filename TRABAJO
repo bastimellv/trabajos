@@ -1,0 +1,12 @@
+SELECT
+    P.PAC_RUN,
+    P.DV_RUN,
+    P.PNOMBRE || ' ' || P.SNOMBRE || ' ' || P.APATERNO || ' ' || P.AMATERNO,
+    A.ATE_ID,
+    PA.FECHA_VENC_PAGO -- Agregamos la fecha de vencimiento del pago
+FROM
+    PACIENTE P
+JOIN
+    ATENCION A ON P.PAC_RUN = A.PAC_RUN
+JOIN
+    PAGO_ATENCION PA ON A.ATE_ID = PA.ATE_ID; -- Conectamos la tabla PAGO_ATENCION
